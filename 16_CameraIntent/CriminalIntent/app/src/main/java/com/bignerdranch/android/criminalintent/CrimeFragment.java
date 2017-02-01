@@ -604,24 +604,24 @@ public class CrimeFragment extends Fragment {
 
     private void updatePhotoView() {
         if ((mPhotoFile == null || !mPhotoFile.exists())) {
-            mPhotoView3.setImageDrawable(null);
+            mPhotoView4.setImageDrawable(null);
         } else {
             if (lastUpdatedIndex == 3) {
                 Bitmap bitmap = PictureUtils.getScaledBitmap(
-                        mPhotoFile.getPath(), getActivity());
-                mPhotoView3.setImageBitmap(bitmap);
+                        mPhotoFile.getPath(), 150,150);
+                mPhotoView4.setImageBitmap(bitmap);
                 lastUpdatedIndex++;
 
             }
         }
 
         if ((mPhotoFile == null || !mPhotoFile.exists())) {
-            mPhotoView4.setImageDrawable(null);
+            mPhotoView3.setImageDrawable(null);
         } else {
             if (lastUpdatedIndex == 2) {
                 Bitmap bitmap = PictureUtils.getScaledBitmap(
-                        mPhotoFile.getPath(), getActivity());
-                mPhotoView4.setImageBitmap(bitmap);
+                        mPhotoFile.getPath(), 150,150);
+                mPhotoView3.setImageBitmap(bitmap);
                 lastUpdatedIndex++;
 
             }
@@ -632,7 +632,7 @@ public class CrimeFragment extends Fragment {
         } else {
             if (lastUpdatedIndex == 1){
                 Bitmap bitmap = PictureUtils.getScaledBitmap(
-                        mPhotoFile.getPath(), getActivity());
+                        mPhotoFile.getPath(), 150,150);
                 mPhotoView2.setImageBitmap(bitmap);
                 lastUpdatedIndex++;
             }
@@ -643,15 +643,15 @@ public class CrimeFragment extends Fragment {
         } else {
             if (lastUpdatedIndex == 0){
                 Bitmap bitmap = PictureUtils.getScaledBitmap(
-                        mPhotoFile.getPath(), getActivity());
+                        mPhotoFile.getPath(), 150, 150);
                 mPhotoView1.setImageBitmap(bitmap);
                 lastUpdatedIndex++;
             }
         }
 
-           /* if (lastUpdatedIndex >= 4) {
+            if (lastUpdatedIndex >= 4) {
                 lastUpdatedIndex = 0;
-            }*/
+            }
 
         }
 
