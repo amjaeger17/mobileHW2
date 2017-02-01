@@ -358,6 +358,7 @@ import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -372,6 +373,8 @@ import android.widget.ImageView;
 import java.io.File;
 import java.util.Date;
 import java.util.UUID;
+
+
 
 public class CrimeFragment extends Fragment {
 
@@ -397,6 +400,9 @@ public class CrimeFragment extends Fragment {
 
 
 
+    private static final String TAG = CrimeFragment.class.getSimpleName();
+
+
     private int lastUpdatedIndex = 0;
 
     public static CrimeFragment newInstance(UUID crimeId) {
@@ -414,6 +420,8 @@ public class CrimeFragment extends Fragment {
         UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
         mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
         mPhotoFile = CrimeLab.get(getActivity()).getPhotoFile(mCrime);
+
+
     }
 
     @Override
@@ -574,6 +582,7 @@ public class CrimeFragment extends Fragment {
                 c.close();
             }
         } else if (requestCode == REQUEST_PHOTO) {
+            Log.d(TAG, "I want to update!");
             updatePhotoView();
         }
     }
@@ -603,6 +612,7 @@ public class CrimeFragment extends Fragment {
     }
 
     private void updatePhotoView() {
+        Log.d(TAG, "HIIIIIIIIIIIII");
         if ((mPhotoFile == null || !mPhotoFile.exists())) {
             mPhotoView4.setImageDrawable(null);
         } else {
@@ -644,6 +654,12 @@ public class CrimeFragment extends Fragment {
             if (lastUpdatedIndex == 0){
                 Bitmap bitmap = PictureUtils.getScaledBitmap(
                         mPhotoFile.getPath(), 150, 150);
+                if(null == bitmap) {
+                    Log.d(TAG, "FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCKKKKKK");
+                }
+                if(null != bitmap) {
+                    Log.d(TAG, "We all good");
+                }
                 mPhotoView1.setImageBitmap(bitmap);
                 lastUpdatedIndex++;
             }
